@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PluginState">
+    <option name="returnTypeClassInfoList" value="[{&quot;className&quot;:&quot;kotlinc&quot;,&quot;classExtension&quot;:&quot;xml&quot;},{&quot;className&quot;:&quot;my-plugin-state&quot;,&quot;classExtension&quot;:&quot;xml&quot;},{&quot;className&quot;:&quot;assets&quot;},{&quot;className&quot;:&quot;FileApi&quot;,&quot;classExtension&quot;:&quot;kt&quot;},{&quot;className&quot;:&quot;FileRepository&quot;,&quot;classExtension&quot;:&quot;kt&quot;},{&quot;className&quot;:&quot;FileViewModel&quot;,&quot;classExtension&quot;:&quot;kt&quot;},{&quot;className&quot;:&quot;build&quot;},{&quot;className&quot;:&quot;vcs&quot;,&quot;classExtension&quot;:&quot;xml&quot;}]" />
+  </component>
+</project>
