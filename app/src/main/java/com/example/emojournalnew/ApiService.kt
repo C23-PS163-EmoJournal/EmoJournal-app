@@ -15,4 +15,5 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Part("file") body: RequestBody,
     ): Call<ResponseBody>
+
 }
