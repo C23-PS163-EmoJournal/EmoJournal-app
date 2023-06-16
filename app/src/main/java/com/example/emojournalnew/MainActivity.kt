@@ -78,6 +78,8 @@ class MainActivity : ComponentActivity() {
         // Add more emotions, emoji images, and advice messages as needed
     )
 
+    private val isFirstTime = mutableStateOf(true) // Added state variable
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -91,7 +93,7 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .padding(bottom = 70.dp),
+                            .padding(bottom = 40.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Button(onClick = {
@@ -101,13 +103,17 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    // Display the emotion and confidence to the user
+                    // Display the welcome message or emotion and confidence based on isFirstTime state
                     Column(
                         modifier = Modifier
                             .align(Alignment.Center)
-                            .padding(top = 16.dp)
+                            .padding(top = 5.dp)
                     ) {
-                        EmotionScreen(emotionState.value, confidenceState.value)
+                        if (isFirstTime.value) {
+                            WelcomeScreen() // Show welcome message
+                        } else {
+                            EmotionScreen(emotionState.value, confidenceState.value) // Show emotion and confidence
+                        }
                     }
                 }
             }
@@ -120,6 +126,7 @@ class MainActivity : ComponentActivity() {
                     val selectedFile = getFileFromUri(it)
                     selectedFile?.let {
                         uploadSoundFile(it)
+                        isFirstTime.value = false // Update the state variable after uploading the audio file
                         hit_api()
                     }
                 }
@@ -251,4 +258,33 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+    @Composable
+    fun WelcomeScreen() {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Welcome to EmoJournal!",
+                style = TextStyle(
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ),
+                modifier = Modifier.padding(vertical = 16.dp)
+            )
+
+            Text(
+                text = "This is a journaling app where you can record and analyze your emotions. To get started, click the 'Upload Audio' button and select an audio file.",
+                style = TextStyle(
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center
+                )
+            )
+        }
+    }
+
+    // ...
 }
